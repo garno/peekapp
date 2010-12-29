@@ -1,0 +1,5 @@
+:user_agent: "iTunes/10.0.1 (Macintosh; Intel Mac OS X 10.6.4) AppleWebKit/533.18.1"
+:reviews_url: "http://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/customerReviews?update=1&id=|app_id|&appVersion=|app_version|&sort=4&displayable-kind=11&page=|page|"
+:ratings_url: "http://itunes.apple.com/WebObjects/MZStore.woa/wa/customerReviews?id=|app_id|&displayable-kind=11"
+:app_url: "http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsLookup?id=|app_id|"
+:search_url: "http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term=|keywords|&entity=software"
