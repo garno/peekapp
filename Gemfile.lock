@@ -1,0 +1,23 @@
+PATH
+  remote: .
+  specs:
+    peekapp (0.0.1)
+      curb (>= 0.7.9)
+      json (>= 1.4.6)
+      nokogiri (>= 1.4.4)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    curb (0.7.9)
+    json (1.4.6)
+    nokogiri (1.4.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  curb (>= 0.7.9)
+  json (>= 1.4.6)
+  nokogiri (>= 1.4.4)
+  peekapp!
