@@ -1,5 +1,6 @@
 require "curb"
 require "json"
+require "nokogiri"
 
 $peekapp_config = YAML::load(File.open(File.dirname(__FILE__)+"/config/default.yml"))
 
@@ -10,7 +11,6 @@ module Peekapp
       request.headers["User-Agent"] = $peekapp_config[:user_agent]
       request.headers["X-Apple-Store-Front"] = args[:store_id] if args[:store_id]
     end
-
     c.body_str
   end # }}}
 
