@@ -2,7 +2,7 @@ require "curb"
 require "json"
 require "nokogiri"
 
-$peekapp_config = YAML::load(File.open(File.dirname(__FILE__)+"/config/default.yml"))
+$peekapp_config = YAML::load(File.open("#{File.dirname(__FILE__)}/config/default.yml"))
 
 module Peekapp
 
@@ -19,4 +19,12 @@ module Peekapp
     data.each_pair{|k,v| url = url.gsub("|#{k}|", v.to_s) if k != :url}
     url
   end # }}}
+
+  def self.load_exceptions # {{{
+    exceptions = YAML::load(File.open("#{File.dirname(__FILE__)}/config/exceptions.yml"))
+    exceptions.each { |error| self.module_eval("#{error} = Class.new(StandardError)") }
+  end # }}}
+
 end
+
+Peekapp::load_exceptions

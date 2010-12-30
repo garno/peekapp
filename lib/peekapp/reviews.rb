@@ -48,8 +48,6 @@ module Peekapp
       reviews
     end # }}}
 
-    # TODO => Create these exception classes automatically
-    self.module_eval("LatestReviewReached = Class.new(StandardError)")
   end
 
   class Review

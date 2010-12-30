@@ -20,8 +20,6 @@ module Peekapp
       self._reviews
     end # }}}
 
-    # TODO => Create these exception classes automatically
-    self.module_eval("AppNotFound = Class.new(StandardError)")
   end
 
   class App
