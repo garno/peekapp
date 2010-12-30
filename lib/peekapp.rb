@@ -1,1 +1,10 @@
+require "yaml"
+require "curb"
+require "json"
+require "nokogiri"
 
+require "peekapp/base.rb"
+require "peekapp/version.rb"
+require "peekapp/apps.rb"
+require "peekapp/reviews.rb"
+require "peekapp/ratings.rb"
