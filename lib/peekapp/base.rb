@@ -1,12 +1,14 @@
 require "curb"
 require "json"
 
+$peekapp_config = YAML::load(File.open(File.dirname(__FILE__)+"/config/default.yml"))
+
 module Peekapp
 
   def self.query args # {{{
     c = Curl::Easy.perform(parse_url(args)) do |request|
-      request.headers["User-Agent"] = "iTunes/10.0.1 (Macintosh; Intel Mac OS X 10.6.4) AppleWebKit/533.18.1"
-      request.headers["X-Apple-Store-Front"] = "15344-5,12"
+      request.headers["User-Agent"] = $peekapp_config[:user_agent]
+      request.headers["X-Apple-Store-Front"] = args[:store_id] if args[:store_id]
     end
 
     c.body_str

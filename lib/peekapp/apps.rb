@@ -6,7 +6,7 @@ module Peekapp
     end # }}}
 
     def self.find id # {{{
-      result = JSON.parse(Peekapp::query :url => "http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsLookup?id=|app_id|", :app_id => id)
+      result = JSON.parse(Peekapp::query :url => $peekapp_config[:app_url], :app_id => id)
       raise AppNotFound if result["resultCount"] < 1
       result["results"].map{|a| App.new a}
     end # }}}
