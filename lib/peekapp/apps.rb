@@ -14,7 +14,8 @@ module Peekapp
     end # }}}
 
     def ratings options={} # {{{
-      Peekapp::Ratings.from_app self.id, options
+      self._ratings = Peekapp::Ratings.from_app self.id, ["143455-5,12"], options if self._ratings.nil? or options[:force_refresh]
+      self._ratings
     end # }}}
 
     def reviews options={} # {{{
@@ -27,7 +28,7 @@ module Peekapp
   class App
     include Apps
 
-    attr_accessor :_reviews
+    attr_accessor :_reviews, :_ratings
 
     def initialize data # {{{
       @data = data
