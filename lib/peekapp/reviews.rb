@@ -2,23 +2,33 @@ module Peekapp
 
   module Reviews
 
+    #
+    # Options
+    #  - :app_version
+    #  - :latest_review_id
+    #  - :page
+    #
     def self.from_app id, stores, options = {} # {{{
       reviews = Array.new
       begin
         stores.each do |s|
-          args = {:url => $peekapp_config[:reviews_url],
-                  :app_id => id,
-                  :store_id => s,
-                  :page => 1,
-                  :app_version => "all"}
+          args = {:url         => $peekapp_config[:reviews_url],
+                  :app_id      => id,
+                  :store_id    => s,
+                  :page        => (options[:page] ? options[:page] : 1),
+                  :app_version => (options[:app_version] ? options[:app_version] : "all")}
           dom = Peekapp::query args
-          nb_page = Nokogiri::HTML.parse(dom).css("div.paginated-content").first["total-number-of-pages"].to_i
+          begin
+            nb_page = Nokogiri::HTML.parse(dom).css("div.paginated-content").first["total-number-of-pages"].to_i 
+          rescue
+            raise ReviewsUnavailableForThisApp
+          end
           nb_page.times do |z|
             # dom is already instanciated for z === 0
             args[:page] = z+1
             dom = Peekapp::query args if z > 0
             parse(dom).each do |p|
-              raise LatestReviewReached if p.id === args[:latest_review_id].to_s
+              raise LatestReviewReached if p.id === options[:latest_review_id].to_s
               reviews << p
             end
           end
@@ -60,6 +70,7 @@ module Peekapp
     def id # {{{
       @data[:id]
     end # }}}
+
   end
 
 end
