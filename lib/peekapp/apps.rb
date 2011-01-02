@@ -8,7 +8,7 @@ module Peekapp
     end # }}}
 
     def self.find id # {{{
-      result = JSON.parse(Peekapp::query :url => $peekapp_config[:app_url], :app_id => id, :store_id => "143455-5,12")
+      result = JSON.parse(Peekapp::query :url => $peekapp_config[:app_url], :app_id => id)
       raise AppNotFound if result["resultCount"] < 1
       result["results"].map{|a| App.new a}.first
     end # }}}
