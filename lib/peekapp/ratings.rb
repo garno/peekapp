@@ -54,11 +54,9 @@ module Peekapp
       @data[:id]
     end # }}}
 
-
   def set args # {{{
     @data.merge!({args[:key] => args[:value]})
   end # }}}
-
 
   end
 

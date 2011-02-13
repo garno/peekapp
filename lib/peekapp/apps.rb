@@ -10,17 +10,7 @@ module Peekapp
     def self.find id # {{{
       result = JSON.parse(Peekapp::query :url => $peekapp_config[:app_url], :app_id => id)
       raise AppNotFound if result["resultCount"] < 1
-      result["results"].map{|a| App.new a}.first
-    end # }}}
-
-    def ratings options={} # {{{
-      self._ratings = Peekapp::Ratings.from_app self.id, ["143455-5,12"], options if self._ratings.nil? or options[:force_refresh]
-      self._ratings
-    end # }}}
-
-    def reviews options={} # {{{
-      self._reviews = Peekapp::Reviews.from_app self.id, ["143455-5,12"], options if self._reviews.nil? or options[:force_refresh]
-      self._reviews
+      result["results"].map{ |a| App.new a }.first
     end # }}}
 
   end
@@ -40,6 +30,16 @@ module Peekapp
 
     def method_missing method # {{{
       @data[method.to_s]
+    end # }}}
+
+    def ratings options={} # {{{
+      self._ratings = Peekapp::Ratings.from_app self.id, ["143455-5,12"], options if self._ratings.nil? or options[:force_refresh]
+      self._ratings
+    end # }}}
+
+    def reviews options={} # {{{
+      self._reviews = Peekapp::Reviews.from_app self.id, ["143455-5,12"], options if self._reviews.nil? or options[:force_refresh]
+      self._reviews
     end # }}}
 
   end
