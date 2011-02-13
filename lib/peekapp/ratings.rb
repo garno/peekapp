@@ -53,9 +53,9 @@ module Peekapp
       @data[:id]
     end # }}}
 
-  def set args # {{{
-    @data.merge!({args[:key] => args[:value]})
-  end # }}}
+    def set args # {{{
+      @data.merge!({args[:key] => args[:value]})
+    end # }}}
 
     def method_missing method # {{{
       @data[method.to_sym]

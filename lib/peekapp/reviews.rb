@@ -57,7 +57,6 @@ module Peekapp
   end
 
   class Review
-    include Reviews
 
     def initialize data # {{{
       @data = data
