@@ -16,7 +16,6 @@ module Peekapp
   end
 
   class App
-    include Apps
 
     attr_accessor :_reviews, :_ratings
 

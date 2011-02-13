@@ -44,7 +44,6 @@ module Peekapp
   end
 
   class Rating
-    include Ratings
 
     def initialize data # {{{
       @data = data
@@ -58,7 +57,10 @@ module Peekapp
     @data.merge!({args[:key] => args[:value]})
   end # }}}
 
-  end
+    def method_missing method # {{{
+      @data[method.to_sym]
+    end # }}}
 
+  end
 
 end
