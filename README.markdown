@@ -1,11 +1,11 @@
 While working on [Peakapp.com](http://peakapp.com), I needed to retrieve reviews and ratings from the App Store. Since Apple doesn't provide any public API, I've developped: [Peekapp &mdash; a ruby gem](https://github.com/garno/peekapp).
 
-##### Installation
+## Installation
     gem install peekapp
 
-##### How to
+## How to
 
-For advanced functionnalities I you should read the source [here on Github](https://github.com/garno/peekapp). Peekapp can only retrieve ratings & reviews from the Canadian App Store (*this will be fixed soon*).
+For advanced functionnalities I you should read the source. Peekapp can only retrieve ratings & reviews from the Canadian App Store (*this will be fixed soon*).
 
     require "peekapp"
 
@@ -33,10 +33,10 @@ For advanced functionnalities I you should read the source [here on Github](http
     #      :store_id => "143455-5,12"
     #    }>, ...]
 
-##### Warning
+## Warning
 Since Peekapp is **scraping** the App Store, you might experience some problems if Apple change iTunes' html layout. I've made some tests and the App Store is updated every 20 minutes (*ballpark*). So don't waste your time trying to get *real time* ratings & reviews.
 
-##### Todo
+## Todo
   - Create unit tests w/ [FakeWeb](https://github.com/chrisk/fakeweb)
   - Allow international App Stores
   - iTunes Connect support
