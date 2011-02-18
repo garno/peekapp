@@ -1,11 +1,11 @@
-While working on [Peakapp.com](http://peakapp.com), I needed to retrieve reviews and ratings from the App Store. Since Apple doesn't provide any public API, I've developped: [Peekapp &mdash; a ruby gem](https://github.com/garno/peekapp).
+Retrieve reviews and ratings from the App Store.
 
-## Installation
+# Installation
     gem install peekapp
 
 ## How to
 
-For advanced functionnalities I you should read the source. Peekapp can only retrieve ratings & reviews from the Canadian App Store (*this will be fixed soon*).
+For advanced functionnalities you should read the source. Peekapp can only retrieve ratings & reviews from the Canadian App Store (*this will be fixed soon*).
 
     require "peekapp"
 
