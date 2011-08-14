@@ -7,10 +7,10 @@ Gem::Specification.new do |s|
   s.version     = Peekapp::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Samuel Garneau"]
-  s.email       = ["self@samuelgarneau.com"]
+  s.email       = ["samgarneau@gmail.com"]
   s.homepage    = "http://github.com/garno/peekapp"
-  s.summary     = %q{Write a gem summary}
-  s.description = %q{Write a gem description}
+  s.summary     = %q{Retrieve ratings & reviews from the App Store}
+  s.description = %q{Easily scrape the App Store to retrieve ratings & reviews.}
 
   #s.rubyforge_project = "peekapp"
 
