@@ -15,7 +15,7 @@ module Peekapp
           }
           dom = Peekapp::query args
           begin
-            nb_page = Nokogiri::HTML.parse(dom).css("div.paginated-content").first["total-number-of-pages"].to_i 
+            nb_page = Nokogiri::HTML.parse(dom).css("div.paginated-content").first["total-number-of-pages"].to_i
           rescue
             raise ReviewsUnavailableForThisApp
           end
@@ -24,7 +24,7 @@ module Peekapp
             args[:page] = z+1
             dom = Peekapp::query args if z > 0
             parse(dom).each do |p|
-              raise LatestReviewReached if p.id === options[:latest_review_id].to_s
+              raise LatestReviewReached if options[:latest_review_hash] and p.id == options[:latest_review_hash]
               reviews << p
             end
           end
@@ -41,7 +41,6 @@ module Peekapp
       dom.css("div.customer-review").each do |r|
         # That's some ugly stuff... I know
         reviews << Review.new({
-          :id          => r.css("a.report").first["href"].split("=").last,
           :title       => r.css("span.customerReviewTitle").children.to_s,
           :comment     => r.css("p.content").children.to_s.gsub("\n", "").gsub("  ", ""),
           :username    => r.css("a.reviewer").children.to_s.gsub("\n", "").gsub(" ", ""),
@@ -62,12 +61,12 @@ module Peekapp
       @data = data
     end # }}}
 
-    def id # {{{
-      @data[:id]
-    end # }}}
-
     def method_missing method # {{{
       @data[method.to_sym]
+    end # }}}
+
+    def id # {{{
+      (Digest::SHA256.new << self.username + self.title).to_s
     end # }}}
 
   end
