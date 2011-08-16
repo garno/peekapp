@@ -1,6 +1,6 @@
 Retrieve reviews and ratings from the App Store.
 
-# Installation
+# Installation
     gem install peekapp
 
 ## How to
@@ -22,7 +22,7 @@ For advanced functionnalities you should read the source. Peekapp can only retri
     #       :user_id  => 33308895,
     #       :version  => "2.0",
     #       :date     => "9-Oct-2009",
-    #       :id       => 131605495
+    #       :id       => Digest::SHA256.new("title + username")
     #    }>, ...]
 
     # And the ratings...
