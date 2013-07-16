@@ -5,7 +5,7 @@ Retrieve reviews and ratings from the App Store.
 
 ## How to
 
-For advanced functionnalities you should read the source. Peekapp can only retrieve ratings & reviews from the Canadian App Store (*this will be fixed soon*).
+For advanced functionnalities you should read the source. Peekapp can only retrieve ratings & reviews from the Canadian App Store.
 
     require "peekapp"
 
